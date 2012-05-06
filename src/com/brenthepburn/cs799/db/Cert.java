@@ -86,10 +86,10 @@ public class Cert {
 
 		byte[] functionalDigest = new byte[4];
 		for (int i = 0; i < 4; i++) {
-			functionalDigest[0] = digest[0];
+			functionalDigest[i] = digest[i];
 		}
-
-		BigInteger bi = rsa.encrypt(new BigInteger(functionalDigest));
+		BigInteger value = new BigInteger(1, functionalDigest);
+		BigInteger bi = rsa.decrypt(value);
 		signature = bi.toString();
 	}
 
@@ -106,7 +106,7 @@ public class Cert {
 
 	public String toString(boolean includeSignature) {
 		String value = toString();
-		if(includeSignature)
+		if (includeSignature)
 			value = value.concat(",").concat(signature);
 		return value;
 	}

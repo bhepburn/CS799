@@ -52,8 +52,8 @@ public class DBHelper {
 	}
 
 	private static void setDBSystemDir() {
-		System.setProperty("derby.system.home", "./db");
-		File fileSystemDir = new File("./db");
+		System.setProperty("derby.system.home", "db");
+		File fileSystemDir = new File("db");
 		fileSystemDir.mkdir();
 		try {
 			System.out.println(fileSystemDir.getCanonicalPath());

@@ -254,7 +254,7 @@ public class index extends HttpServlet {
 				BigInteger value = FastExponentiation.fastExponentiation(b, e,
 						n);
 				if (!bigInt.equals(value)) {
-					throw new CertException("Invalid signature");
+					throw new CertException("Invalid signature on cert");
 				} else {
 					success = "The following cert is valid: " + certString;
 				}
@@ -281,7 +281,7 @@ public class index extends HttpServlet {
 				MD5 md5 = new MD5();
 				md5.setMessage(sentMsg);
 				byte[] bytes = md5.calculate32BitDigest();
-				BigInteger hash = new BigInteger(bytes);
+				BigInteger hash = new BigInteger(1, bytes);
 
 				BigInteger signature = new BigInteger(sentSig);
 				BigInteger key = new BigInteger(keyString);
